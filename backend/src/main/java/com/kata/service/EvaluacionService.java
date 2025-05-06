@@ -91,16 +91,14 @@ public class EvaluacionService {
                     icono = String.valueOf(r.getPosicion());
             }
             
-            String iconoAprobacion = r.isAprobado()
-            ? "<span style='color: green; font-weight: bold;'>APROBADO</span>"
-            : "<span style='color: red; font-weight: bold;'>NO PROBADO</span>";
+            String textoAprobacion = r.isAprobado() ? "Sí" : "No";
 
             html.append("<tr style='").append(rowStyle).append("'>")
                 .append("<td>").append(icono).append("</td>")
                 .append("<td>").append(r.getNombre()).append("</td>")
                 .append("<td>").append(String.format("%.2f", r.getPuntaje())).append("</td>")
-                .append("<td>").append(iconoAprobacion).append("</td>")
-            .append("</tr>");
+                .append("<td>").append(textoAprobacion).append("</td>")
+                .append("</tr>");
         }
 
         html.append("</table>");
