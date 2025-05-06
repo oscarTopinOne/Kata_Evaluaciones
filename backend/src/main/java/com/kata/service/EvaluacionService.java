@@ -79,24 +79,15 @@ public class EvaluacionService {
                 default: icono = String.valueOf(r.getPosicion());
             }
     
-            // Macro status en formato válido para Confluence (storage format)
-            String estadoAprobacion = r.isAprobado()
-                ? "<ac:structured-macro ac:name=\"status\">" +
-                  "<ac:parameter ac:name=\"title\">Aprobado</ac:parameter>" +
-                  "<ac:parameter ac:name=\"color\">Green</ac:parameter>" +
-                  "</ac:structured-macro>"
-                : "<ac:structured-macro ac:name=\"status\">" +
-                  "<ac:parameter ac:name=\"title\">No aprobado</ac:parameter>" +
-                  "<ac:parameter ac:name=\"color\">Red</ac:parameter>" +
-                  "</ac:structured-macro>";
-    
+            String estadoAprobacion = r.isAprobado() ? "Si" : "No";
+
             html.append("<tr>")
                 .append("<td>").append(icono).append("</td>")
                 .append("<td>").append(r.getNombre()).append("</td>")
                 .append("<td>").append(String.format("%.2f", r.getPuntaje())).append("</td>")
-                .append("<td>").append(estadoAprobacion).append("</td>")
+                .append("<td><p>").append(estadoAprobacion).append("</p></td>")
                 .append("</tr>");
-        }
+            
     
         html.append("</tbody></table>");
         return html.toString();
