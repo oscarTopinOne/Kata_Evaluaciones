@@ -14,15 +14,16 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                    .allowedOriginPatterns(
-                        "https://kata-evaluaciones-fd57.vercel.app",
-                        "https://kata-evaluaciones-fd57-7wt59e2de-oscartopinones-projects.vercel.app"
-                    )
-                    .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                    .allowedHeaders("*")
-                    .allowCredentials(true);
+                        .allowedOriginPatterns(
+                            "https://kata-evaluaciones-fd57.vercel.app",
+                            "https://*.vercel.app"
+                        )
+                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                        .allowedHeaders("*")
+                        .allowCredentials(true);
             }
         };
     }
 }
+
 
