@@ -1,38 +1,39 @@
 package com.kata.config;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@Configuration
-public class CorsFilterConfig {
+@Component
+public class CorsFilterConfig implements Filter {
+    @Override
+    public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
+        throws IOException, ServletException {
 
-    @Bean
-    public Filter corsFilter() {
-        return new Filter() {
-            @Override
-            public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
-                    throws IOException, ServletException {
+        HttpServletResponse response = (HttpServletResponse) res;
+        HttpServletRequest request = (HttpServletRequest) req;
 
-                HttpServletResponse response = (HttpServletResponse) res;
+        String origin = request.getHeader("Origin");
 
-                response.setHeader("Access-Control-Allow-Origin", "https://kata-evaluaciones-fd57.vercel.app");
-                response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-                response.setHeader("Access-Control-Allow-Headers", "*");
-                response.setHeader("Access-Control-Allow-Credentials", "true");
+        // Solo permitimos el origen específico
+        if ("https://kata-evaluaciones-fd57.vercel.app".equals(origin)) {
+            response.setHeader("Access-Control-Allow-Origin", origin);
+        }
 
-                chain.doFilter(req, res);
-            }
+        response.setHeader("Access-Control-Allow-Credentials", "true");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT");
+        response.setHeader("Access-Control-Max-Age", "3600");
+        response.setHeader("Access-Control-Allow-Headers", "Origin, Content-Type, Accept, Authorization");
 
-            @Override
-            public void init(FilterConfig filterConfig) {}
-
-            @Override
-            public void destroy() {}
-        };
+        if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
+            response.setStatus(HttpServletResponse.SC_OK);
+        } else {
+            chain.doFilter(req, res);
+        }
     }
 }
+
 
