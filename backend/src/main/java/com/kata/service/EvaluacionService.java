@@ -91,12 +91,14 @@ public class EvaluacionService {
                     icono = String.valueOf(r.getPosicion());
             }
             
+            String iconoAprobacion = r.isAprobado() ? "✅" : "❌";
+
             html.append("<tr style='").append(rowStyle).append("'>")
                 .append("<td>").append(icono).append("</td>")
                 .append("<td>").append(r.getNombre()).append("</td>")
                 .append("<td>").append(String.format("%.2f", r.getPuntaje())).append("</td>")
-                .append("<td>").append(r.isAprobado()).append("</td>")
-                .append("</tr>");
+                .append("<td>").append(iconoAprobacion).append("</td>")
+            .append("</tr>");
         }
 
         html.append("</table>");
