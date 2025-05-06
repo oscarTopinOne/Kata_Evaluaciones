@@ -1,19 +1,14 @@
 import React from "react";
-import axios from "axios";
+import { publicarEnConfluence } from "./api"; // importa la función desde api.js
 
 function ConfluenceBoton() {
-  const publicarEnConfluence = async () => {
-    try {
-      await axios.post("/api/confluence/publicar");
-      alert("✅ Reporte publicado en Confluence");
-    } catch (error) {
-      console.error("❌ Error al publicar:", error);
-      alert("Ocurrió un error al enviar el reporte a Confluence");
-    }
+  const handleClick = async () => {
+    const exito = await publicarEnConfluence();
+    alert(exito ? "✅ Reporte publicado en Confluence" : "❌ Error al publicar");
   };
 
   return (
-    <button onClick={publicarEnConfluence}>
+    <button onClick={handleClick}>
       Publicar reporte en Confluence
     </button>
   );
