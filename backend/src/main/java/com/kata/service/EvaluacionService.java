@@ -56,6 +56,7 @@ public class EvaluacionService {
             .collect(Collectors.toList());
     }
 
+
     // Genera HTML para reporte visual con medallas
     public String generarHtmlRankingPorParticipante() {
         List<RankingDTO> ranking = generarRankingPorParticipante();
@@ -91,13 +92,21 @@ public class EvaluacionService {
                     icono = String.valueOf(r.getPosicion());
             }
             
-            String textoAprobacion = r.isAprobado() ? "Sí" : "No";
+            String iconoAprobacion = r.isAprobado()
+            ? "<ac:structured-macro ac:name=\"status\">" +
+              "<ac:parameter ac:name=\"title\">Aprobado</ac:parameter>" +
+              "<ac:parameter ac:name=\"color\">Green</ac:parameter>" +
+              "</ac:structured-macro>"
+            : "<ac:structured-macro ac:name=\"status\">" +
+              "<ac:parameter ac:name=\"title\">No aprobado</ac:parameter>" +
+              "<ac:parameter ac:name=\"color\">Red</ac:parameter>" +
+              "</ac:structured-macro>";
 
             html.append("<tr style='").append(rowStyle).append("'>")
                 .append("<td>").append(icono).append("</td>")
                 .append("<td>").append(r.getNombre()).append("</td>")
                 .append("<td>").append(String.format("%.2f", r.getPuntaje())).append("</td>")
-                .append("<td>").append(textoAprobacion).append("</td>")
+                .append("<td>").append(iconoAprobacion).append("</td>")
                 .append("</tr>");
         }
 
