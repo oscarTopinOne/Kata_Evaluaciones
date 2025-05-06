@@ -1,9 +1,10 @@
 {
     "rewrites": [
       {
-        "source": "/api-proxy/:path*",
-        "destination": "https://kata-evaluaciones-production.up.railway.app/:path*"
+        "source": "/api/(.*)",
+        "destination": "https://kata-evaluaciones-production.up.railway.app/api/$1"
       }
     ]
   }
+  
   
