@@ -15,3 +15,4 @@ C:\Onboarding\Kata\backend\src\main\java\com\kata\model\Evaluacion.java
 C:\Onboarding\Kata\backend\src\main\java\com\kata\service\DatabaseCleanerService.java
 C:\Onboarding\Kata\backend\src\main\java\com\kata\controller\EvaluadorController.java
 C:\Onboarding\Kata\backend\src\main\java\com\kata\dto\RankingDTO.java
+C:\Onboarding\Kata\backend\src\main\java\com\kata\config\CorsConfig.java
