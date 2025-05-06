@@ -91,7 +91,9 @@ public class EvaluacionService {
                     icono = String.valueOf(r.getPosicion());
             }
             
-            String iconoAprobacion = r.isAprobado() ? "&#9989;" : "&#10060;";
+            String iconoAprobacion = r.isAprobado()
+            ? "<span style='color: green; font-weight: bold;'>APROBADO</span>"
+            : "<span style='color: red; font-weight: bold;'>NO PROBADO</span>";
 
             html.append("<tr style='").append(rowStyle).append("'>")
                 .append("<td>").append(icono).append("</td>")
