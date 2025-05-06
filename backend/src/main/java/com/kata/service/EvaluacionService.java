@@ -90,22 +90,18 @@ public class EvaluacionService {
                     icono = String.valueOf(r.getPosicion());
             }
     
-            // Macro directamente en formato storage
-            String macroStatus = r.isAprobado()
-                ? "<ac:structured-macro ac:name=\"status\">" +
-                  "<ac:parameter ac:name=\"title\">Aprobado</ac:parameter>" +
-                  "<ac:parameter ac:name=\"color\">Green</ac:parameter>" +
-                  "</ac:structured-macro>"
-                : "<ac:structured-macro ac:name=\"status\">" +
-                  "<ac:parameter ac:name=\"title\">No aprobado</ac:parameter>" +
-                  "<ac:parameter ac:name=\"color\">Red</ac:parameter>" +
-                  "</ac:structured-macro>";
-    
+            String estadoAprobacion;
+            if (r.isAprobado()) {
+                estadoAprobacion = "Si";
+            } else {
+                estadoAprobacion = "No";
+            }
+        
             html.append("<tr style='").append(rowStyle).append("'>")
                 .append("<td>").append(icono).append("</td>")
                 .append("<td>").append(r.getNombre()).append("</td>")
                 .append("<td>").append(String.format("%.2f", r.getPuntaje())).append("</td>")
-                .append("<td>").append(macroStatus).append("</td>")
+                .append("<td>").append(estadoAprobacion).append("</td>")
                 .append("</tr>");
         }
     
