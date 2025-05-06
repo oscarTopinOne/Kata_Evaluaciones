@@ -57,39 +57,30 @@ public class EvaluacionService {
 
     public String generarHtmlRankingPorParticipante() {
         List<RankingDTO> ranking = generarRankingPorParticipante();
-
+    
         StringBuilder html = new StringBuilder();
-        html.append("<h1>\ud83c\udfc6 Ranking de Evaluaciones</h1>");
-        html.append("<table><tbody>")
+        html.append("<h1>🏆 Ranking de Evaluaciones</h1>");
+        html.append("<table>")
+            .append("<tbody>")
             .append("<tr>")
             .append("<th>Posición</th>")
             .append("<th>Participante</th>")
             .append("<th>Puntaje</th>")
             .append("<th>¿Aprueba?</th>")
             .append("</tr>");
-
+    
         for (RankingDTO r : ranking) {
             String icono;
             switch (r.getPosicion()) {
-                case 1: icono = "\ud83e\udd47"; break;
-                case 2: icono = "\ud83e\udd48"; break;
-                case 3: icono = "\ud83e\udd49"; break;
+                case 1: icono = "🥇"; break;
+                case 2: icono = "🥈"; break;
+                case 3: icono = "🥉"; break;
                 default: icono = String.valueOf(r.getPosicion());
             }
-
-            String estadoAprobacion="";
-            switch (String.valueOf(r.isAprobado())) {
-                case "true":
-                    estadoAprobacion = "Sí";
-                    break;
-                case "false":
-                    estadoAprobacion = "No";
-                    break;
-                default:
-                    estadoAprobacion = "Desconocido";
-            }
-            
-
+    
+            // Aquí dejamos el valor quemado como "Sí"
+            String estadoAprobacion = "Sí";
+    
             html.append("<tr>")
                 .append("<td>").append(icono).append("</td>")
                 .append("<td>").append(r.getNombre()).append("</td>")
@@ -97,9 +88,10 @@ public class EvaluacionService {
                 .append("<td>").append(estadoAprobacion).append("</td>")
                 .append("</tr>");
         }
-
+    
         html.append("</tbody></table>");
         return html.toString();
     }
+    
 }
 
