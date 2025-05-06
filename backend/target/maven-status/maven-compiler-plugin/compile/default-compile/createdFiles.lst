@@ -1,0 +1,12 @@
+com\kata\model\Participante.class
+com\kata\model\Evaluacion.class
+com\kata\repository\ParticipanteRepository.class
+com\kata\model\Evaluador.class
+com\kata\service\DatabaseCleanerService.class
+com\kata\repository\EvaluadorRepository.class
+com\kata\controller\DebugController.class
+com\kata\controller\ParticipanteController.class
+com\kata\controller\EvaluadorController.class
+com\kata\repository\EvaluacionRepository.class
+com\kata\dto\EvaluacionDTO.class
+com\kata\KataApplication.class
