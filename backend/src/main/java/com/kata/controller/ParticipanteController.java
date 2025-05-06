@@ -9,7 +9,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/participantes")
-@CrossOrigin(origins = "*") // Permitir llamadas desde el frontend
 public class ParticipanteController {
 
     @Autowired

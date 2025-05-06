@@ -9,7 +9,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/evaluadores")
-@CrossOrigin("*")
 public class EvaluadorController {
 
     @Autowired
