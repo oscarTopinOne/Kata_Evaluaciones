@@ -14,4 +14,6 @@ com\kata\controller\ParticipanteController.class
 com\kata\controller\EvaluadorController.class
 com\kata\repository\EvaluacionRepository.class
 com\kata\dto\EvaluacionDTO.class
+com\kata\config\CorsConfig$1.class
 com\kata\KataApplication.class
+com\kata\config\CorsConfig.class
