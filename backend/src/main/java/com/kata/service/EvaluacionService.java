@@ -77,13 +77,24 @@ public class EvaluacionService {
                 default: icono = String.valueOf(r.getPosicion());
             }
 
-            String estadoAprobacion = r.isAprobado() ? "Sí" : "No";
+            String estadoAprobacion="";
+            switch (String.valueOf(r.isAprobado())) {
+                case "true":
+                    estadoAprobacion = "Sí";
+                    break;
+                case "false":
+                    estadoAprobacion = "No";
+                    break;
+                default:
+                    estadoAprobacion = "Desconocido";
+            }
+            
 
             html.append("<tr>")
                 .append("<td>").append(icono).append("</td>")
                 .append("<td>").append(r.getNombre()).append("</td>")
                 .append("<td>").append(String.format("%.2f", r.getPuntaje())).append("</td>")
-                .append("<td><p>").append(estadoAprobacion).append("</p></td>")
+                .append("<td>").append(estadoAprobacion).append("</td>")
                 .append("</tr>");
         }
 
