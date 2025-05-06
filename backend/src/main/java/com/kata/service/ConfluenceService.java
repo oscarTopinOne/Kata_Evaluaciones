@@ -30,15 +30,16 @@ public class ConfluenceService {
     public void publicarEnConfluence(String titulo, String contenidoHtml) {
         String url = baseUrl + "/rest/api/content";
 
-        // Credenciales codificadas
+        // Codificar credenciales en base64 para el header Authorization
         String credentials = email + ":" + apiToken;
         String encodedAuth = Base64.getEncoder()
                                    .encodeToString(credentials.getBytes(StandardCharsets.UTF_8));
+
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.set("Authorization", "Basic " + encodedAuth);
 
-        // Construcción del cuerpo del POST
+        // Construir el cuerpo del POST
         Map<String, Object> requestBody = new HashMap<>();
         requestBody.put("type", "page");
         requestBody.put("title", titulo);
@@ -55,6 +56,7 @@ public class ConfluenceService {
         bodyContent.put("storage", storage);
         requestBody.put("body", bodyContent);
 
+        // Ejecutar el POST a la API de Confluence
         HttpEntity<Map<String, Object>> request = new HttpEntity<>(requestBody, headers);
 
         ResponseEntity<String> response = restTemplate.postForEntity(url, request, String.class);
@@ -67,3 +69,4 @@ public class ConfluenceService {
         }
     }
 }
+
