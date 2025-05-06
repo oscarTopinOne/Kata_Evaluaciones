@@ -78,9 +78,9 @@ public class EvaluacionService {
                 default: icono = String.valueOf(r.getPosicion());
             }
     
-            // Aquí dejamos el valor quemado como "Sí"
-            String estadoAprobacion = "Sí";
-    
+            // Determinar si aprueba o no
+            String estadoAprobacion = r.isAprobado() ? "Sí" : "No";
+
             html.append("<tr>")
                 .append("<td>").append(icono).append("</td>")
                 .append("<td>").append(r.getNombre()).append("</td>")
