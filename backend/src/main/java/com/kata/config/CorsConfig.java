@@ -13,10 +13,7 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                    .allowedOriginPatterns( // Esta línea permite múltiples dominios
-                        "https://kata-evaluaciones-fd57.vercel.app",
-                        "https://*.vercel.app"
-                    )
+                    .allowedOriginPatterns("*") // Esto sí funciona con allowCredentials
                     .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                     .allowedHeaders("*")
                     .allowCredentials(true);
@@ -24,3 +21,4 @@ public class CorsConfig {
         };
     }
 }
+
